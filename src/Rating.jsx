@@ -104,6 +104,7 @@ class Rating extends React.PureComponent {
       direction,
       emptySymbol,
       fullSymbol,
+      inputProps,
       placeholderSymbol,
       className,
       id,
@@ -170,6 +171,7 @@ class Rating extends React.PureComponent {
         className={className}
         tabIndex={tabIndex}
         aria-label={this.props['aria-label']}
+        {...inputProps}
         {...(!readonly && {
           onMouseEnter: this.onMouseEnter,
           onMouseLeave: this.onMouseLeave
@@ -190,6 +192,7 @@ Rating.propTypes = typeof __DEV__ !== 'undefined' && __DEV__ && {
   quiet: PropTypes.bool.isRequired,
   fractions: PropTypes.number.isRequired,
   direction: PropTypes.string.isRequired,
+  inputProps: PropTypes.object.isRequired,
   emptySymbol: PropTypes.oneOfType([
     // Array of class names and/or style objects.
     PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.element])),
@@ -222,6 +225,10 @@ Rating.propTypes = typeof __DEV__ !== 'undefined' && __DEV__ && {
   ]),
   onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired
+};
+
+Rating.propTypes = typeof __DEV__ !== 'undefined' && __DEV__ && {
+  inputProps: {}
 };
 
 export default Rating;
